@@ -1,8 +1,65 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@section Landing{
+    <link rel="stylesheet" href="~/css/landing.css">
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<header id="landing-header">
+    <div class="wrapper nav landing-nav" data-aos="fade-down">
+        <div class="logo">
+            <h1 class="abril">Together</h1>
+        </div>
+        <div class="nav-links">
+            <ul>
+                <li>
+                    <a href="#how">How it Works</a>
+                </li>
+                <li>
+                    <a>Login</a>
+                </li>
+                <li>
+                    <a>Register</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<section id="banner">
+    <div id="leftCol" class="col">
+        <div class="banner-text" data-aos="fade-right">
+            <h1 class="abril">IN THIS TOGETHER</h1>
+            <p>A platform where people can seek help to purchase or pick-up items when they're uncapable and those that are able to help, can offer their time to obtain the items that others can't</p>
+        </div>
+    </div>
+    <div class="col image"></div>
+</section>
+
+<section id="how" class="wrapper" data-aos="fade-up">
+    <h3 class="abril">How It Works</h3>
+    <div class="cards">
+        <div class="card">
+            <h4>Person In Need</h4>
+            <ul>
+                <li>
+                    <p>For someone who is uncapable to leave your home, you will be able to create a task and list out the items that you need. It can be groceries, medication, food pick-up or supplies.</p>
+                </li>
+                <li>
+                    <p>Specify the urgency to obtain the items requested but please keep in mind that time is not a guarantee as the Helper could run into issues obtaining items like long lines at the store or out of stock and have to jump from store to store to find it.</p>
+                </li>
+                <li>
+                    <p>To pay for your items, we will require you to pay your Helper through Venmo. Venmo is a free transaction platform that allows you to pay or receive money with no fees. Before receiving your items, you will pay your Helper and the Helper will notify you once your items are on your front door.</p>
+                </li>
+                <li>
+                    <p>Tips can be provided to your helper, not required but encouraged to show your appreciation.</p>
+                </li>
+            </ul>
+        </div>
+        <div class="card">
+            <h4>Helper</h4>
+            <ul>
+                <li>
+                    <p>For the person who is capable of going out to pick-up the items for those in need, you you can select tasks to take on from your dashboard.</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>

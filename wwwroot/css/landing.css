@@ -1,0 +1,86 @@
+/* UNIVERSAL STYLES */
+h3{
+    font-size: 2.5rem;
+}
+
+/* NAVIGATION */
+#landing-header{
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+.landing-nav .logo h1{
+    font-size: 2.15rem;
+}
+.landing-nav .nav-links ul li a{
+    color: #fff;
+}
+
+/* BANNER */
+#banner{
+    height: 100vh;
+    display: flex;
+    justify-content: space-between;
+}
+#banner #leftCol{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#banner #leftCol .banner-text{
+    width: 80%;
+}
+#leftCol .banner-text h1{
+    font-size: 4.75rem;
+    line-height: 80px;
+    width: 70%;
+    margin-bottom: 1rem;
+}
+#banner .col{
+    width: 49%;
+}
+#banner .image{
+    background-image: linear-gradient( rgba(0,0,0,0.5), rgba(0,0,0,0.1), rgba(0,0,0,0.5) ), url('https://images.unsplash.com/photo-1542323228-002ac256e7b8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2550&q=80');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* HOW IT WORKS */
+#how{
+    margin-top: 5rem;
+}
+#how h3{
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+#how .cards{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+}
+#how .cards .card{
+    width: 40%;
+    padding: 2rem 2.5rem;
+    background: rgba(255,255,255,0.7);
+    /* border-radius: 15px; */
+    /* box-shadow: -3px -3px 9px rgba(255,255,255,1),
+                -3px -3px 12px rgba(255,255,255,0.5),
+                inset 3px 3px 5px rgba(255,255,255,0.1),
+                2px 2px 7px rgba(0,0,0,0.2); */
+}
+#how .cards .card h4{
+    text-align: center;
+    letter-spacing: 0.5px;
+    font-size: 1.2rem;
+    margin-bottom: 2rem !important;
+}
+#how .cards .card ul li{
+    margin-bottom: 1rem;
+}
+#how .cards .card ul li:last-child{
+    margin-bottom: 0;
+}

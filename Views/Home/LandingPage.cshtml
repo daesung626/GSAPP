@@ -1,8 +1,556 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@section Landing{
+    @* <link rel="stylesheet" href="~/css/LandingPage.css">
+    <link rel="stylesheet" href="~/css/LandingQueries.css" /> *@
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<style>
+    /* NAVIGATION */
+    .mobile-nav,
+    #nav-btn{
+        display: none;
+    }
+    .landing-nav .logo h1{
+        color: #243f51;
+    }
+    .landing-nav .nav-links ul li a{
+        color: #fff;
+        border: 2px solid transparent;
+        padding: 2px 20px;
+        transition: all 0.5s ease-out;
+    }
+    .landing-nav .nav-links ul li a:hover{
+        border-color: #fff;
+        transition: border-color 0.3s ease-in;
+    }
+    .landing-nav .nav-links #register-btn{
+        background-color: #fff;
+        border-color: #fff;
+        color: #243f51;
+        transition: all 0.5s ease-out;
+    }
+    .landing-nav .nav-links #register-btn:hover{
+        background-color: transparent;
+        color: #fff;
+        transition: all 0.3s ease-in;
+    }
+
+    /* BANNER */
+    #banner{
+        height: 100vh;
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+    }
+    #banner #leftCol{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    #banner #leftCol .banner-text{
+        width: 80%;
+    }
+    .banner-text h1{
+        font-size: 4.75rem;
+        line-height: 1;
+        width: 70%;
+        margin-bottom: 1rem;
+    }
+    #banner .col{
+        width: 49%;
+    }
+    #banner .col p{
+        font-size: 1.1rem;
+        line-height: 1.3;
+    }
+    #banner .image{
+        background-image: linear-gradient( rgba(0,0,0,0.6), rgba(0,0,0,0.3), rgba(0,0,0,0.1) ), url('https://images.unsplash.com/photo-1542323228-002ac256e7b8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2550&q=80');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    /* Our MISSION */
+    #how{
+        margin-top: 4rem;
+    }
+    #how h3{
+        text-align: center;
+        margin-bottom: 2.5rem;
+    }
+    #how .cards{
+        display: flex;
+        justify-content: space-between;
+    }
+    #how .cards .card{
+        width: 40%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    #how .cards .card p:first-of-type{
+        margin-bottom: 12px;
+    }
+    #how .cards .card p{
+        line-height: 1.5;
+    }
+    #how .cards .image{
+        width: 57%;
+        height: 70vh;
+    }
+    /* COVID-19 TRACKER */
+    #covid-tracker{
+        margin-top: 4rem;
+        margin-bottom: 4rem;
+    }
+    #covid-tracker .section-title{
+        text-align: center;
+        margin-bottom: 2.5rem;
+    }
+    #covid-tracker .section-title h3{
+        line-height: 1.25;
+    }
+    #covid-tracker .data-container{
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+    }
+    #covid-tracker #country{
+        margin-bottom: 1rem;
+    }
+    #covid-tracker p a{
+        color: cornflowerblue;
+    }
+
+
+    /* FOOTER */
+    footer{
+        height: auto;
+        padding: 3rem 0;
+        color: #fff;
+        background: #243f51;
+    }
+    #footer-nav{
+        display: flex; 
+        justify-content: space-between;
+    }
+    #footer-nav .footer-box{
+        margin-right: 1rem;
+    }
+    #footer-nav #together{
+        width: 7rem;
+    }
+    #footer-nav a{
+        color: #fff;
+    }
+    #footer-nav .logo h1{
+        font-size: 3rem;
+        margin-bottom: 2rem;
+    }
+    #footer-nav .logo span{
+        font-size: 0.85rem;
+    }
+    #footer-nav .footer-links h4{
+        margin-bottom: 10px;
+        letter-spacing: 1px;
+    }
+    #footer-nav .footer-links ul li{
+        display: block;
+        margin-bottom: 5px;
+    }
+    #footer-nav .footer-links ul li:last-child{
+        margin-bottom: 0;
+    }
+    #footer-nav .footer-links ul li a{
+        color: rgba(255, 255, 255, 0.65);
+        font-size: 0.85rem;
+        transition: color 0.4s ease-out;
+    }
+    #footer-nav .footer-links ul li a:hover{
+        color: rgba(255, 255, 255, 1);
+        transition: color 0.2s ease-in;
+    }
+
+    @@media screen and (max-width: 1150px){
+        /* Universal Styles */
+        html{
+            font-size: 16px;
+        }
+    }
+
+    @@media screen and (max-width: 1000px){
+        /* Banner */
+        .banner-text h1{
+            font-size: 4rem;
+        }
+    }
+
+    @@media screen and (max-width: 942px){
+        /* Footer */
+        footer{
+            padding: 2rem 0 0 0;
+        }
+        #footer-nav .footer-box{
+            margin-bottom: 2rem;
+        }
+    }
+
+    @@media screen and (max-width: 850px){
+        /* Banner */
+        #banner{
+            height: 85vh;
+        }
+        .banner-text h1{
+            font-size: 3.25rem;
+        }
+        #banner .col p{
+            font-size: 1rem;
+        }
+        /* Our Mission */
+        #how .cards .image{
+            height: 60vh;
+        }
+        /* Footer */
+        footer{
+            padding: 2rem 0;
+        }
+        #footer-nav{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            justify-items: center;
+            align-items: flex-start;
+        }
+        #footer-nav .footer-links{
+            margin: 0;
+        }
+    }
+
+    @@media screen and (max-width: 800px){
+        /* Navigation */
+        .landing-nav .logo h1{
+            color: #fff;
+        }
+        /* Banner */
+        #banner #leftCol{
+            position: absolute;
+            color: #fff;
+            top: 35%;
+        }
+        #banner .image{
+            width: 100%;
+        }
+        /* Our MISSION */
+        #how .cards .card{
+            width: 48%;
+        }
+        #how .cards .image{
+            width: 48%;
+            height: 50vh;
+        }
+    }
+
+    @@media screen and (max-width: 690px){
+        /* Universal Styles */
+        html{
+            font-size: 14px;
+        }
+        /* Navigation */
+        .mobile-nav,
+        #nav-btn{
+            display: block;
+        }
+        .landing-nav .nav-links{
+            display: none;
+        }
+        #nav-btn{
+            padding: 1rem 1rem;
+        }
+        #nav-btn:hover{
+            cursor: pointer;
+        }
+        #nav-btn:active{
+            transform: scale(0.95);
+        }
+        #menu-icon{
+            display: block;
+            position: relative;
+        }
+        #menu-icon,
+        #menu-icon::before,
+        #menu-icon::after{
+            width: 1.75rem;
+            height: 3px;
+            background: #fff;
+
+            transition: transform 300ms ease-in-out, opacity 200ms linear;
+        }
+        #menu-icon::before,
+        #menu-icon::after{
+            content: '';
+            position: absolute;
+            left: 0;
+        }
+        #menu-icon::before{bottom: 8px;}
+        #menu-icon::after{top: 8px;}
+        .animate{
+            transform: rotate(45deg);
+        }
+        .animate::before{
+            opacity: 0;
+        }
+        .animate::after{
+            transform: rotate(90deg) translate(-9px);
+        }
+
+        .mobile-nav.show{
+            transform: translate(0);
+            transition: transform 0.2s ease;
+        }
+        .mobile-nav{
+            width: 180px;
+            right: 0;
+            height: 55vh;
+            position: absolute;
+            z-index: 3;
+            opacity: 0.9;
+            border-bottom-left-radius: 30px;
+            transform: translate(180px);
+            background-color: #243f51;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.5s ease-out;
+        }
+        .mobile-nav ul li{
+            font-size: 1.15rem;
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+        .mobile-nav ul li a{
+            color: #fff;
+        }
+        /* Banner */
+        .banner-text h1{
+            width: 100%;
+        }
+        #banner #leftCol{
+            top: 33%;
+            left: 5%;
+            width: 60%;
+        }
+        #banner #leftCol .banner-text{
+            width: 100%;
+        }
+        #banner .col p{
+            font-size: 1.15rem;
+        }
+        /* Our MISSION */
+        #how .cards{
+            flex-direction: column;
+        }
+        #how .cards .card,
+        #how .cards .image{
+            width: 100%;
+        }
+        #how .cards .card{
+            margin-bottom: 1.5rem;
+        }
+        /* COVID-19 TRACKER */
+        #covid-tracker{
+            text-align: center;
+        }
+        #covid-tracker .data-container{
+            flex-direction: column;
+            justify-content: center;
+        }
+        #covid-tracker .data-container div{
+            margin-bottom: 12px;
+        }
+        #covid-tracker .data-container div:last-of-type{
+            margin-bottom: 0;
+        }
+        /* Footer */
+        footer{
+            padding: 2rem 0 0.5rem 0;
+        }
+        .mobile-footCol{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #footer-nav{
+            display: flex;
+            flex-direction: column;
+        }
+        #footer-nav .logo span{
+            font-size: 0.9rem;
+        }
+        #footer-nav .footer-box{
+            margin-bottom: 1.5rem;
+        }
+        #footer-nav .footer-links h4{
+            font-size: 1.15rem;
+        }
+        #footer-nav .footer-links ul li{
+            margin-bottom: 7px;
+        }
+        #footer-nav .footer-links ul li a{
+            font-size: 1rem;
+        }
+    }
+</style>
+
+<header id="landing-header">
+    <div class="wrapper nav landing-nav" data-aos="fade-down">
+
+        <div class="logo">
+            <a asp-action="LandingPage" asp-controller="Home">
+                <h1 class="abril">Together</h1>
+            </a>
+        </div>
+        <div class="nav-links">
+            <ul>
+                <li>
+                    <a href="#how">Our Mission</a>
+                </li>
+                <li>
+                    <a asp-action="Login" asp-controller="Home">Login</a>
+                </li>
+                <li>
+                    <a asp-action="SelectRole" asp-controller="Home" id="register-btn" class="standout-btn">Register</a>
+                </li>
+            </ul>
+        </div>
+        <div id="nav-btn">
+            <span id="menu-icon"></span>
+        </div>
+
+    </div>
+</header>
+
+<div class="mobile-nav">
+    <ul>
+        <li>
+            <a href="#how">Our Mission</a>
+        </li>
+        <li>
+            <a asp-action="Login" asp-controller="Home">Login</a>
+        </li>
+        <li>
+            <a asp-action="SelectRole" asp-controller="Home" id="register-btn" class="standout-btn">Register</a>
+        </li>
+    </ul>
 </div>
+
+<section id="banner">
+    <div id="leftCol" class="col">
+        <div class="banner-text" data-aos="fade-right">
+            <h1 class="abril">IN THIS TOGETHER</h1>
+            <p>A platform where people can seek help to purchase or pick-up items when they're uncapable and those that are able to help, can offer their time to obtain the items that others can't</p>
+        </div>
+    </div>
+    <div class="col image"></div>
+</section>
+
+<section id="how" class="wrapper" data-aos="fade-down">
+    <h3 class="abril">Our Mission</h3>
+    <div class="cards">
+        <div class="card">
+            <p>This platform was built with the intention to help out people who are incapable to leave their homes to purchase groceries or home  essentials. With the experience of COVID-19, we realize that this platform will be essential to those who are in quarantine, a senior or handicapped person.</p>
+            <p>With <span class="bold">Together</span>, you will be able to register as a person who needs help or you can register as a helper. The person in need can then fill out a form of the items that they require specifying how urgent is their request.</p>
+        </div>
+        <div class="image">
+            <img src="https://images.unsplash.com/photo-1512479064533-47d51d07bb93?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1268&q=80" class="pic">
+        </div>
+    </div>
+
+</section>
+
+<section id="covid-tracker" class="wrapper" data-aos="fade-down">
+    <div class="section-title">
+        <h3 class="abril title">COVID-19 Tracker</h3>
+    </div>
+    <h2 id="country">United States</h2>
+    <div class="data-container">
+        <div>
+            <h4>Cases</h4>
+            <h3 id="cases"></h3>
+        </div>
+        <div>
+            <h4>Deaths</h4>
+            <h3 id="deaths"></h3>
+        </div>
+        <div>
+            <h4>Last Updated</h4>
+            <h3 id="update"></h3>
+        </div>
+    </div>
+    <p class="footer">Information provided by <a href="https://systems.jhu.edu/research/public-health/ncov/" target="_blank">Johns Hopkins University</a></p>
+</section>
+
+<footer>
+    <div class="wrapper mobile-footCol">
+        <div id="footer-nav" class="nav">
+
+            <div class="logo footer-box">
+                <a asp-action="LandingPage" asp-controller="Home">
+                    <h1 class="abril">Together</h1>
+                </a>
+                <span>&copy; 2020 Together. All rights reserved</span>
+            </div>
+
+            <div id="together" class="footer-links footer-box">
+                <h4>Together</h4>
+                <ul>
+                    <li>
+                        <a href="#how">Our Mission</a>
+                    </li>
+                    <li>
+                        <a asp-action="Login" asp-controller="Home">Login</a>
+                    </li>
+                    <li>
+                        <a asp-action="SelectRole" asp-controller="Home">Register</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="footer-links footer-box">
+                <h4>Resources</h4>
+                <ul>
+                    <li>
+                        <a href="https://www.ahd.com/">American Hospital Directory</a>
+                    </li>
+                    <li>
+                        <a href="https://www.meridianrx.com/en/pharmacy-lookup/">meridianRx - Pharmacy lookup</a>
+                    </li>
+                    <li>
+                        <a href="https://venmo.com/?gclsrc=aw.ds&" target="_blank">Venmo - Digital wallet</a>
+                    </li>
+                    <li>
+                        <a href="https://www.skype.com/en/get-skype/">Skype - Video chat</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="footer-links footer-box">
+                <h4>Resources</h4>
+                <ul>
+                    <li>
+                        <a href="https://www.boxed.com/" target="_blank">Boxed - Bulk shopping</a>
+                    </li>
+                    <li>
+                        <a href="https://www.themuse.com/">themuse - Job search</a>
+                    </li>
+                    <li>
+                        <a href="https://www.uber.com/">uber - Taxi like service</a>
+                    </li>
+                    <li>
+                        <a href="https://www.lyft.com/">lyft - Taxi like service</a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</footer>

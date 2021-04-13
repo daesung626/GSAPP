@@ -1,0 +1,46 @@
+@model Request
+
+@section Landing{
+    <link rel="stylesheet" href="~/css/LogReg.css">
+    <link rel="stylesheet" href="~/css/Queries.css">
+}
+
+<header id="LogReg-header">
+    <div class="wrapper nav">
+        <div class="logo" data-aos="fade-down">
+            <a asp-action="LandingPage" asp-controller="Home">
+                <h1 class="abril">Together</h1>
+            </a>
+        </div>
+        <div class="nav-links">
+            <ul>
+                <li>
+                    <a asp-action="Dashboard" asp-controller="Home" class="standout-btn">Dashboard</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<section id="request-main" class="wrapper">
+    <div id="request-form" class="reg-form-box" data-aos="zoom-in">
+        <form asp-action="submitRequest" asp-controller="Home" method="POST">
+            <label asp-for="Items">
+                What do you need? 
+                <span asp-validation-for="Items" class="red"></span>
+            </label>
+            <input asp-for="Items" placeholder="House supplies, groceries etc...">
+
+            <label asp-for="Urgency">
+                When do you need this by? (mm/dd/yyyy hh:mm)
+                <span asp-validation-for="Urgency" class="red"></span>
+            </label>
+            <input asp-for="Urgency" placeholder="mm/dd/yyyy hh:mm am/pm">
+
+            <label asp-for="Notes">Notes:</label>
+            <textarea asp-for="Notes" placeholder="Hand soap, toilet paper, 1 gl. of milk etc..."></textarea>
+
+            <input type="submit" class="form-btn" value="SUBMIT">
+        </form>
+    </div>
+</section>

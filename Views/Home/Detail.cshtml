@@ -1,6 +1,132 @@
-@{
-    ViewData["Title"] = "Detail Page";
-}
-<h1>@ViewData["Title"]</h1>
+@model User
 
-<p>This is the detail page.</p>
+@section Dashboard{
+    <link rel="stylesheet" href="~/css/Dashboard.css">
+    <link rel="stylesheet" href="~/css/Queries.css">
+}
+
+
+<script src="https://api.mapbox.com/mapbox-gl-js/v1.9.0/mapbox-gl.js"></script>
+<link href="https://api.mapbox.com/mapbox-gl-js/v1.9.0/mapbox-gl.css" rel="stylesheet" />
+
+<header id="Details-header">
+    <div class="wrapper nav">
+        <div class="logo" data-aos="fade-down">
+            <h1>Details</h1>
+        </div>
+        <div class="nav-links">
+            <ul>
+                <li>
+                    <a asp-action="Dashboard" asp-controller="Home" id="request-btn" class="standout-btn">Dashboard</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<section id="detail-main" class="wrapper">
+    <div class="leftCol">
+        <div class="person-info-container">
+
+            <div class="person-info-text">
+            <p><span class="bold">Name: </span>@Model.FirstName @Model.LastName</p>
+            <p><span class="bold">Email: </span><a href="mailto:@Model.Email" class="orange">@Model.Email</a></p>
+            <p><span class="bold">Phone: </span><a href="tel:@Model.PhoneNumber" class="orange">@Model.PhoneNumber</a></p>
+            <p><span class="bold">Venmo ID: </span>@Model.VenmoId</p>
+            <p><span class="bold">Zipcode: </span>@Model.ZipCode</p>
+            </div>
+
+        </div>
+        <div id="map"></div>
+    </div>
+
+    <div id="detail-content" class="rightCol">
+
+        <div class="request-container">
+            <div class="backToTop">
+                <h4>Open Requests</h4>
+                <a href="#Details-header" class="toTop">Back to top</a>
+            </div>
+            @foreach (var req in @Model.RequestsCreated)
+            {
+                @if (@req.IsCompleted == false)
+                {
+                    <div>
+                        <p><span class="bold">Needed by: </span> @req.Urgency.ToString("MM/dd/yyyy hh:mm tt")</p>
+                        <p><span class="bold">Items: </span> @req.Items</p>
+                        <p><span class="bold">Notes: </span>@req.Notes</p>
+                    </div>
+                    <div>
+                        @if(req.Creator.UserId != @ViewBag.UserId)
+                        {
+                        <form asp-action="CompleteReq" asp-route-reqId="@req.RequestId" asp-controller="Home" method="POST">
+                            <input type="submit" class="accept-btn" value="Accept Request">
+                        </form>
+                        }
+                        else if (req.Creator.UserId == @ViewBag.UserId)
+                        {
+                            <a class="delete-btn" asp-action="Delete" asp-route-requestId="@req.RequestId">Delete</a>
+                        }
+                    </div>
+                }
+            }
+        </div>
+
+        <div class="completed-container">
+            <div class="backToTop">
+                <h4>Completed Requests</h4>
+                <a href="#Details-header" class="toTop">Back to top</a>
+            </div>
+            @foreach (var creq in @Model.RequestsCreated)
+            {
+                @if (creq.IsCompleted ==true)
+                {
+                    <div class="completed-panel">
+                        <p><span class="bold">Needed by: </span> @creq.Urgency.ToString("MM/dd/yyyy hh:mm tt")</p>
+                        <p><span class="bold">Items: </span> @creq.Items</p>
+                        <p><span class="bold">Notes: </span>@creq.Notes</p>
+                        <p>
+                            <span class="bold">
+                                Completed by: 
+                                <a class="orange" asp-action="HelperDetails" asp-route-UserId="@ViewBag.CompletedBy.UserId">@ViewBag.CompletedBy.FirstName @ViewBag.CompletedBy.LastName</a>
+                            </span>
+                        </p>
+                    </div>
+                }
+            }
+        </div>
+
+    </div>
+</section>
+
+<script src="https://unpkg.com/es6-promise@4.2.4/dist/es6-promise.auto.min.js"></script>
+<script src="https://unpkg.com/@@mapbox/mapbox-sdk/umd/mapbox-sdk.min.js"></script>
+<script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoiZGFlc3VuZ2Nob2k2MjYiLCJhIjoiY2s4a3RjMDkwMDVpbjNpbnd5ZDdoamk5cCJ9.yx1ofJFjnAGsdngQi9EsuA';
+    var mapboxClient = mapboxSdk({ accessToken: mapboxgl.accessToken });
+    mapboxClient.geocoding
+        .forwardGeocode({
+            query: '@Model.ZipCode',
+            autocomplete: false,
+            limit: 1
+        })
+        .send()
+        .then(function (response) {
+            if (
+                response &&
+                response.body &&
+                response.body.features &&
+                response.body.features.length
+            ) {
+                var feature = response.body.features[0];
+
+                var map = new mapboxgl.Map({
+                    container: 'map',
+                    style: 'mapbox://styles/mapbox/streets-v11',
+                    center: feature.center,
+                    zoom: 10.5
+                });
+                map.addControl(new mapboxgl.NavigationControl());
+            }
+        });
+</script>

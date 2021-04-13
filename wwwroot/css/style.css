@@ -1,0 +1,77 @@
+/* These styles apply to the entire app */
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+html{
+    font-size: 18px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    scroll-behavior: smooth;
+    color: #243f51;
+    background: #f2f3f7;
+}
+header{
+    width: 100%;
+    padding: 1rem 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 5;
+}
+ul li{
+    list-style-type: none;
+}
+h3{
+    font-size: 2.5rem;
+}
+a{
+    text-decoration: none;
+}
+p{
+    line-height: 1.5;
+}
+header .logo h1{
+    font-size: 2.35rem;
+    color: #000;
+}
+
+.pic{
+    display: block;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+.bold{
+    font-weight: 700;
+}
+.red{
+    color: firebrick;
+}
+.abril{
+    font-family: 'Abril Fatface';
+    font-weight: 400;
+}
+.wrapper{
+    margin: 0 auto;
+    width: 90%;
+}
+.nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.nav-links ul li{
+    display: inline-block;
+    margin-left: 0.5rem;
+}
+.standout-btn{
+    padding: 2px 20px;
+    border-radius: 5px;
+    border-width: 2px;
+    border-style: solid;
+}
+.standout-btn:active{
+    transform: scale(0.95);
+}

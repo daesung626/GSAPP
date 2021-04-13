@@ -1,0 +1,247 @@
+/* Universal styles for forms */
+.form-redirect-link{
+    color: cornflowerblue;
+    text-decoration: underline;
+    display: block;
+    text-align: center;
+    margin-top: 12px;
+}
+.width-link{
+    margin: 12px auto 12px auto;
+    width: 40%;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    font-family: 'Montserrat', sans-serif;
+}
+form label{
+    font-size: 0.9rem;
+}
+form input{
+    height: 2rem;
+    padding: 0 5px;
+}
+form input::placeholder{
+    color: #243f51;
+    opacity: 0.6;
+}
+form textarea{
+    height: 7rem;
+    padding: 5px;
+}
+form input,
+form textarea{
+    outline: 0;
+    margin-bottom: 1rem;
+    border-radius: 7px;
+    border: 2px solid #243f51;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    transition: all 0.5s ease-out;
+}
+form hr{
+    margin-top: 1rem;
+    margin-bottom: 1.25rem;
+}
+form .image-upload{
+    overflow: hidden;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+form .image-upload .upload-btn{
+    border: 0;
+    outline: 0;
+    background: #243f51;
+    color: #fff;
+    border: 2px solid #243f51;
+    padding: 7px 15px;
+    font-size: 0.85rem;
+    border-radius: 7px;
+    margin-right: 10px;
+    transition: all 0.5s ease-out;
+}
+form .image-upload .upload-btn:hover{
+    cursor: pointer;
+    color: #243f51;
+    background-color: transparent;
+    transition: all 0.3s ease-in;
+}
+form .image-upload .upload-btn:active{
+    transform: scale(0.95);
+}
+form .image-upload .file-callout{
+    max-width: 150px;
+    height: 27px;
+    overflow: hidden;
+    font-size: 0.85rem;
+}
+form #pwd-box{
+    height: 2rem;
+    border-radius: 7px;
+    border: 2px solid #243f51;
+    margin-bottom: 1rem;
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+}
+form #pwd-box input{
+    border: 0;
+    height: 1.75rem;
+    border-radius: 7px;
+    width:90%;
+    margin: 0;
+}
+form #pwd-box span{
+    width: 10%;
+    height: 100%;
+    display:flex;
+    color: #243f51;
+    opacity: 0.6;
+    background-color: transparent;
+    flex-direction:column;
+    justify-content: center;
+    align-items:center;
+    z-index: 1;
+    transition: all 0.5s ease-out;
+}
+form #pwd-box span:hover{
+    cursor: pointer;
+    border-top-right-radius: 7px;
+    border-bottom-right-radius: 7px;
+    opacity: 1;
+    transition: all 0.2s ease-in;
+}
+form .form-btn{
+    background: linear-gradient(to right, #F76241, #ff7759);
+    border-color: transparent;
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: 1px;
+    border-radius: 25px;
+    width: 50%;
+    margin: 1rem auto 0 auto;
+    transition: all 0.5s ease-out;
+}
+form .form-btn:hover{
+    box-shadow: 4px 4px 7px rgba(0,0,0,0.4);
+    cursor: pointer;
+    color: #fff;
+    background-color: transparent;
+    transition: all 0.3s ease-in;
+}
+form .form-btn:active{
+    transform: scale();
+}
+form .single-row{
+    display: flex;
+    justify-content: space-between;
+}
+form .single-row .inputs{
+    width: 47%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* lOGIN.CSHTML STYLES */
+#LogReg-header .logo h1{
+    color: #243f51;
+}
+#LogReg-header .nav-links a{
+    color: #243f51;
+    border-color: #243f51;
+    transition: all 0.5s ease-out;
+}
+#LogReg-header .nav-links a:hover{
+    background-color: #243f51;
+    color: #fff;
+    transition: all 0.3s ease-in;
+}
+#log-body,
+#reg-body,
+#request-main{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.log-container,
+.reg-container{
+    width: 50%;
+    padding: 2rem;
+    background-color: #fff;
+}
+.log-container h3,
+.reg-container h3{
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* REGISTER.CSHTML STYLES */
+.reg-container{
+    position: relative;
+}
+.reg-container p{
+    text-align: center;
+}
+.btn-alignment{
+    margin-top: 1rem;
+}
+.btn-alignment{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.reg-btn{
+    width: 45%;
+    text-align: center;
+    color: #fff;
+    padding: 7px;
+    outline: 0;
+    border-radius: 25px;
+    background: linear-gradient(to right, #F76241, #ff7759);
+    font-size: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    overflow: hidden;
+    position: relative;
+    transition: all 0.5s ease-out;
+}
+.reg-btn:hover{
+    box-shadow: 4px 4px 7px rgba(0,0,0,0.4);
+    cursor: pointer;
+    transition: all 0.2s ease-in;
+}
+.reg-btn:active{
+    transform: scale(0.95);
+}
+
+/* These styles apply for both Help & Helper.cshtml files */
+.help-helper-main{
+    margin-top: 10rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5rem;
+}
+.explanation-card{
+    width: 50%;
+    background-color: #fff;
+    padding: 3rem;
+    height: auto;
+    box-shadow: -4px 4px 7px rgba(0,0,0,0.4);
+}
+.explanation-card h4{
+    margin-bottom: 1rem;
+}
+.reg-form-box{
+    width: 45%;
+    padding: 3rem;
+    background-color: #fff;
+}
+.reg-form-box .form-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}

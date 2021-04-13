@@ -1,0 +1,37 @@
+@section Landing{
+    <link rel="stylesheet" href="~/css/LogReg.css">
+    <link rel="stylesheet" href="~/css/Queries.css">
+}
+
+<header id="LogReg-header">
+    <div class="wrapper nav">
+        <div class="logo">
+            <a asp-action="LandingPage" asp-controller="Home">
+                <h1 class="abril">Together</h1>
+            </a>
+        </div>
+        <div class="nav-links">
+            <ul>
+                <li>
+                    <a asp-action="Login" asp-controller="Home" class="standout-btn">Login</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<section id="reg-body" class="wrapper">
+    <div class="reg-container" data-aos="zoom-in">
+
+        <h3>Register</h3>
+        <p>We ask you to create a Venmo account first before registering. Venmo is a digital wallet that lets you make and share payments with other people. You can download the iOS or Android app or click on the link below to sign up on Venmo.com</p>
+        <a href="https://venmo.com/signup" target="_blank" class="form-redirect-link width-link">Create a Venmo account</a>
+        <p>After creating your Venmo account, select the form that corresponds to you</p>
+        <div class="btn-alignment">
+            <a class="reg-btn" asp-action="HelpRegView" asp-controller="Home">Need help</a>
+            <p>Or</p>
+            <a class="reg-btn" asp-action="HelperRegView" asp-controller="Home">Become a helper</a>
+        </div>
+
+    </div>
+</section>

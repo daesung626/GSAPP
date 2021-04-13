@@ -1,6 +1,100 @@
-@{
-    ViewData["Title"] = "Dashboard Page";
-}
-<h1>@ViewData["Title"]</h1>
+@model List<Request>
 
-<p>This is the dashboard page.</p>
+@section Dashboard{
+    <link rel="stylesheet" href="~/css/Dashboard.css">
+    <link rel="stylesheet" href="~/css/Queries.css">
+}
+
+<header id="Dash-header">
+    <div class="wrapper nav">
+        <div class="logo" data-aos="fade-down">
+            <h1>Dashboard</h1>
+        </div>
+        <div class="nav-links">
+            <ul>
+                @if (ViewBag.CurrentUser.Status == false)
+                {
+                    <li>
+                        <a asp-action="HelperDetails" asp-route-UserId="@ViewBag.CurrentUser.UserId" asp-controller="Home" id="request-btn" class="standout-btn">View Profile</a>
+                    </li>
+                }
+                @if(ViewBag.CurrentUser.Status == true)
+                {
+                    <li>
+                        <a asp-action="RequestForm" asp-controller="Home" id="request-btn" class="standout-btn">Make a request</a>
+                    </li> 
+                    <li>
+                        <a asp-action="Detail" asp-route-Uid="@ViewBag.CurrentUser.UserId" asp-controller="Home">View Profile</a>
+                    </li>
+                }
+                <li>
+                    <a asp-action="Logout" asp-controller="Home">Logout</a>
+                </li>
+            </ul>
+        </div>
+        <div id="dash-btn" onclick="dashNav()">
+            <span id="menu-icon"></span>
+        </div>
+
+    </div>
+</header>
+
+<div class="mobile-dashNav">
+     <ul>
+        @if (ViewBag.CurrentUser.Status == false)
+        {
+            <li>
+                <a asp-action="HelperDetails" asp-route-UserId="@ViewBag.CurrentUser.UserId" asp-controller="Home" id="request-btn" class="standout-btn">View Profile</a>
+            </li>
+        }
+        @if(ViewBag.CurrentUser.Status == true)
+        {
+            <li>
+                <a asp-action="RequestForm" asp-controller="Home" id="request-btn" class="standout-btn">Make a request</a>
+            </li> 
+            <li>
+                <a asp-action="Detail" asp-route-Uid="@ViewBag.CurrentUser.UserId" asp-controller="Home">View Profile</a>
+            </li>
+        }
+        <li>
+            <a asp-action="Logout" asp-controller="Home">Logout</a>
+        </li>
+    </ul>
+    @* <span id="close-dashNav" onclick="closeDash()">&times;</span> *@
+</div>
+
+<section id="dash-main" class="wrapper">
+    <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th id="address-th">Zipcode</th>
+                    <th>Needed By</th>
+                    <th id="action-th">View</th>
+                </tr>
+            </thead>
+            
+            <tbody>
+                @foreach (var request in Model)
+                {
+                    @if (request.IsCompleted == false)
+                    {
+                        <tr>
+                            <td>
+                                <a asp-action="Detail" asp-route-Uid="@request.Creator.UserId" class="orange mobile-name">
+                                    @request.Creator.FirstName @request.Creator.LastName
+                                </a>
+                                <span class="desktop-name">
+                                    @request.Creator.FirstName @request.Creator.LastName
+                                </span>
+                            </td>
+                            <td class="address-td">@request.Creator.ZipCode</td>
+                            <td>@request.Urgency.ToString("MM/dd/yyyy hh:mm tt")</td>
+                            <td class="action-td"><a asp-action="Detail" asp-route-Uid="@request.Creator.UserId" class="view-btn">View</a></td>
+                        </tr>
+                    }
+                }
+            </tbody>
+
+    </table>
+</section>

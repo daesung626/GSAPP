@@ -1,0 +1,71 @@
+@model User
+
+@section Dashboard{
+    <link rel="stylesheet" href="~/css/Dashboard.css">
+    <link rel="stylesheet" href="~/css/Queries.css">
+}
+
+
+<header id="Details-header">
+    <div class="wrapper nav">
+        <div class="logo" data-aos="fade-down">
+            <h1>Profile</h1>
+        </div>
+        <div class="nav-links">
+            <ul>
+                <li>
+                    <a asp-action="Dashboard" asp-controller="Home" id="request-btn" class="standout-btn">Dashboard</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<section id="helperDetails-main" class="wrapper">
+
+    <div id="helper-details" class="person-info-container">
+
+        <div class="person-info-text">
+            <p><span class="bold">Name: </span>@Model.FirstName @Model.LastName</p>
+            <p><span class="bold">Email: </span>@Model.Email</p>
+            <p><span class="bold">Phone: </span>@Model.PhoneNumber</p>
+            <p><span class="bold">Venmo ID: </span>@Model.VenmoId</p>
+            <p><span class="bold">ZipCode: </span>@Model.ZipCode</p>
+        </div>
+
+    </div>
+
+    <div class="accepted-container">
+        <h4>Accepted Requests</h4>
+        @if (@ViewBag.Completed != null)
+        {
+            @foreach (var req in @ViewBag.Completed)
+            {
+                <div class="requestee-container">
+
+                    <div class="col">
+                        <p><span class="bold">From: </span><a asp-action="Detail" asp-route-Uid = "@req.Creator.UserId" class="orange">@req.Creator.FirstName @req.Creator.LastName</a></p>
+                        <p><span class="bold">Items: </span> @req.Items</p>
+                        <p><span class="bold">Notes: </span>@req.Notes</p>
+                    </div>
+                    <div class="col">
+                        @if(@Model.UserId == @ViewBag.CurrentUser.UserId)
+                        {
+                            <form asp-action="CancelReq" asp-route-reqId="@req.RequestId" asp-controller="Home" method="POST">
+                                <input type="submit" class="cancel-btn" value="Cancel Request">
+                            </form>
+                        }
+                    </div>
+                </div>
+            }
+        }else{
+            <p>No requests, visit the <a asp-action="Dashboard" class="blue">Dashboard</a> to start helping our community</p>
+        }
+    </div>
+
+</section>
+
+
+
+
+

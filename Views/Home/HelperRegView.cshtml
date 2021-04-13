@@ -1,0 +1,105 @@
+@model User
+
+@section Landing{
+    <link rel="stylesheet" href="~/css/LogReg.css">
+    <link rel="stylesheet" href="~/css/Queries.css">
+}
+
+<header id="LogReg-header">
+    <div class="wrapper nav">
+        <div class="logo">
+            <a asp-action="LandingPage" asp-controller="Home">
+                <h1 class="abril">Together</h1>
+            </a>
+        </div>
+        <div class="nav-links">
+            <ul>
+                <li>
+                    <a asp-action="Login" asp-controller="Home" class="standout-btn">Login</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<section class="help-helper-main wrapper">
+
+    <div class="explanation-card" data-aos="fade-right" data-aos-delay="700">
+        <h4>How it works</h4>
+        <p>
+            After you fill out the form with all your information, you will be redirected to the dashboard where you will see all the open requests in your area. You can view each request and add to your list of requests to complete. As a helper you will try to meet the time delivery that was stated on the request. If delivery will late, please be sure to contact the person and update them with situation.
+        </p>
+        <br>
+        <p>
+            Once you've gathered all the items requested, you delivered them and drop them off in their front door to avoid any close contact for health safety measures. Before leaving, please notify the person to be paid for the items through Venmo or you can make a payment request. Once you've been paid, you can go on your way to complete another request.
+        </p>
+    </div>
+
+    <div id="helper-form" class="reg-form-box" data-aos="zoom-out">
+        <div class="form-header">
+            <h4>Helper Registration</h4>
+            <a asp-action="SelectRole" asp-for="Home" class="form-redirect-link">Back</a>
+        </div>
+
+        <form asp-action="HelperReg" asp-controller="Home" method="POST" enctype="multipart/form-data">
+
+            <label for="FirstName">First Name * <span asp-validation-for="FirstName" class="red"></span></label>
+            <input asp-for="FirstName" placeholder="Enter your name">
+
+            <label asp-for="LastName">Last Name * <span asp-validation-for="LastName" class="red"></span></label>
+            <input asp-for="LastName" placeholder="Enter your last name">
+
+            <div class="single-row">
+                <div class="inputs">
+                    <label asp-for="Email">Email Address * <span asp-validation-for="Email" class="red"></span></label>
+                    <input asp-for="Email" placeholder="example@example.com">
+                </div>
+
+                <div class="inputs">
+                    <label asp-for="PhoneNumber">Phone Number * <span asp-validation-for="PhoneNumber" class="red"></span></label>
+                    <input asp-for="PhoneNumber" placeholder="123-456-7890">
+                </div>
+            </div>
+
+            <div class="single-row">
+
+                <div class="inputs">
+                    <label asp-for="VenmoId">Venmo ID * <span asp-validation-for="VenmoId" class="red"></span></label>
+                    <input asp-for="VenmoId" placeholder="Enter your Venmo ID">
+                </div>
+
+                <div class="inputs">
+                    <label asp-for="ZipCode">Zip Code * <span asp-validation-for="ZipCode" class="red"></span></label>
+                    <input asp-for="ZipCode" placeholder="Enter your zip code">
+                </div>
+
+            </div>
+
+            <label asp-for="Password">Password * <span asp-validation-for="Password" class="red"></span></label>
+            <input asp-for="Password" placeholder="Enter a password">
+
+            <label asp-for="Confirm">Confirm Password <span asp-validation-for="Confirm" class="red"></span></label>
+            <input asp-for="Confirm" placeholder="Confirm password">
+
+            <input type="hidden" asp-for="Status" value="false">
+            <input type="submit" class="form-btn" value="REGISTER">
+        </form>
+        <a asp-action="Login" asp-controller="Home" class="form-redirect-link width-link">Already have an account?</a>
+
+    </div>
+</section>
+
+<script>
+    let mobileOnly = window.matchMedia('(max-width: 990px)');
+    const formContainer = document.getElementById('helper-form');
+    const explainCard = document.querySelector('.explanation-card');
+
+    function animationStop(){
+        if(mobileOnly.matches){
+            console.log('working');
+            explainCard.setAttribute('data-aos', '0')
+            formContainer.setAttribute('data-aos', '0');
+        }
+    }
+    animationStop();
+</script>

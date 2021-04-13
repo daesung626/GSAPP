@@ -1,0 +1,212 @@
+@media screen and (max-width: 1150px){
+    /* Universal Styles */
+    html{
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 1000px){
+    /* Banner */
+    .banner-text h1{
+        font-size: 4rem;
+    }
+}
+
+@media screen and (max-width: 942px){
+    /* Footer */
+    footer{
+        padding: 2rem 0 0 0;
+    }
+    #footer-nav .footer-box{
+        margin-bottom: 2rem;
+    }
+}
+
+@media screen and (max-width: 850px){
+    /* Banner */
+    #banner{
+        height: 85vh;
+    }
+    .banner-text h1{
+        font-size: 3.25rem;
+    }
+    #banner .col p{
+        font-size: 1rem;
+    }
+    /* Our Mission */
+    #how .cards .image{
+        height: 60vh;
+    }
+    /* Footer */
+    footer{
+        padding: 2rem 0;
+    }
+    #footer-nav{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        justify-items: center;
+        align-items: flex-start;
+    }
+    #footer-nav .footer-links{
+        margin: 0;
+    }
+}
+
+@media screen and (max-width: 800px){
+    /* Navigation */
+    .landing-nav .logo h1{
+        color: #fff;
+    }
+    /* Banner */
+    #banner #leftCol{
+        position: absolute;
+        color: #fff;
+        top: 35%;
+    }
+    #banner .image{
+        width: 100%;
+    }
+    /* Our MISSION */
+    #how .cards .card{
+        width: 48%;
+    }
+    #how .cards .image{
+        width: 48%;
+        height: 50vh;
+    }
+}
+
+@media screen and (max-width: 690px){
+    /* Universal Styles */
+    html{
+        font-size: 14px;
+    }
+    /* Navigation */
+    .mobile-nav,
+    #open-nav{
+        display: block;
+    }
+    .landing-nav .nav-links{
+        display: none;
+    }
+    #open-nav{
+        color: #fff;
+        font-size: 2.5rem;
+    }
+    #open-nav:hover{
+        cursor: pointer;
+    }
+    #open-nav:active{
+        transform: scale(0.95);
+    }
+    #close-btn{
+        font-size: 4rem;
+        color: #fff;
+        position: absolute;
+        top: 2%;
+        right: 10%;
+    }
+    #close-btn:hover,
+    #close-btn:focus{
+        cursor: pointer;
+        top: 2.5%;
+        transform: rotate(180deg);
+        transition: all 0.3s ease;
+    }
+    #close-btn:active{
+        transform: scale(0.95);
+    }
+    .mobile-nav.show{
+        transform: translate(0);
+        transition: transform 0.2s ease;
+    }
+    .mobile-nav{
+        width: 250px;
+        height: 100vh;
+        position: fixed;
+        z-index: 5;
+        transform: translate(-250px);
+        background-color: #243f51;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.5s ease-out;
+    }
+    .mobile-nav ul li{
+        font-size: 1.5rem;
+        text-align: center;
+        margin-bottom: 2.5rem;
+    }
+    .mobile-nav ul li a{
+        color: #fff;
+    }
+    /* Banner */
+    .banner-text h1{
+        width: 100%;
+    }
+    #banner #leftCol{
+        top: 33%;
+        left: 5%;
+        width: 60%;
+    }
+    #banner #leftCol .banner-text{
+        width: 100%;
+    }
+    #banner .col p{
+        font-size: 1.15rem;
+    }
+    /* Our MISSION */
+    #how .cards{
+        flex-direction: column;
+    }
+    #how .cards .card,
+    #how .cards .image{
+        width: 100%;
+    }
+    #how .cards .card{
+        margin-bottom: 1.5rem;
+    }
+    /* COVID-19 TRACKER */
+    #covid-tracker{
+        text-align: center;
+    }
+    #covid-tracker .data-container{
+        flex-direction: column;
+        justify-content: center;
+    }
+    #covid-tracker .data-container div{
+        margin-bottom: 12px;
+    }
+    #covid-tracker .data-container div:last-of-type{
+        margin-bottom: 0;
+    }
+    /* Footer */
+    footer{
+        padding: 2rem 0 0.5rem 0;
+    }
+    .mobile-footCol{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #footer-nav{
+        display: flex;
+        flex-direction: column;
+    }
+    #footer-nav .logo span{
+        font-size: 0.9rem;
+    }
+    #footer-nav .footer-box{
+        margin-bottom: 1.5rem;
+    }
+    #footer-nav .footer-links h4{
+        font-size: 1.15rem;
+    }
+    #footer-nav .footer-links ul li{
+        margin-bottom: 7px;
+    }
+    #footer-nav .footer-links ul li a{
+        font-size: 1rem;
+    }
+}

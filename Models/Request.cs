@@ -1,32 +1,19 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GSAPP.Models
 {
-    public class Task
+    public class Request
     {
         [Key]
-        public int TaskID { get; set; }
-
-        [Required]
-        public string Category { get; set; }
-        // 1.groceries
-        // 2.medication
-        // 3.other
-        // JUAN DO YOU SEE THIS?
-        // PLEASE WORK
-        // WORK PLEASE
-        // LAST CHANCEEEEEEEE
-        [Required]
+        public int RequestId { get; set; }
+        [Required(ErrorMessage = "List what you need")]
         public string Items { get; set; }
         // user can write down everything they need in textbox
-
-        [Required]
-        public string Urgency { get; set; }
-        // 1. low
-        // 2. normal
-        // 3. critical
-        [Required]
+        [Required(ErrorMessage = "Please enter a date and time")]
+        public DateTime Urgency { get; set; }
+        public string Notes { get; set; }
         public bool IsCompleted { get; set; }
         // default val = false;
         public int PickedUpByID { get; set; }
